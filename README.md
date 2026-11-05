@@ -60,11 +60,11 @@ Preencha `GOOGLE_API_KEY` no `.env`. Os demais valores já vêm com padrões fun
 | `GOOGLE_API_KEY` | Chave da API do Google |
 | `GOOGLE_EMBEDDING_MODEL` | Modelo de embeddings (padrão `models/gemini-embedding-001`) |
 | `GOOGLE_LLM_MODEL` | Modelo de chat (padrão `gemini-3.5-flash-lite`) |
-| `DATABASE_URL` | Conexão com o Postgres (padrão `postgresql+psycopg://postgres:postgres@localhost:5433/rag`) |
+| `DATABASE_URL` | Conexão com o Postgres (padrão `postgresql+psycopg://postgres:postgres@localhost:5432/rag`) |
 | `PG_VECTOR_COLLECTION_NAME` | Nome da collection no pgVector (padrão `documento_pdf`) |
 | `PDF_PATH` | PDF a ingerir, relativo à raiz ou absoluto (padrão `document.pdf`) |
 
-> O Postgres do Docker é exposto na porta **5433** do host. Assim ele não conflita com um Postgres local que já esteja usando a 5432.
+> O Postgres do Docker usa a porta **5432** do host. Se você já tem um Postgres local nessa porta (por exemplo, instalado via Homebrew), pare-o antes de subir o container. Caso contrário, a aplicação se conecta ao banco local em vez do container.
 
 ### 2. Crie o ambiente virtual e instale as dependências
 
